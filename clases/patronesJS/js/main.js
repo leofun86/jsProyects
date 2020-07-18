@@ -27,6 +27,12 @@ document.querySelector('.link').addEventListener('click', (e)=>{
     case 'ejemplo_observer':
       sessionStorage.setItem('url', 'js/observer.js');
     break;
+    case 'ejemplo_mediator':
+      sessionStorage.setItem('url', 'js/mediator.js');
+    break;
+    case 'ejemplo_nspace':
+      sessionStorage.setItem('url', 'js/nspace.js');
+    break;
   }
   document.location.reload();
 });

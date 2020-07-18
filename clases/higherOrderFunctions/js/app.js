@@ -124,27 +124,31 @@ const autos = [
 	{ marca: 'Audi', modelo: 'A4', year: 2016, precio: 30000, puertas: 4, color: 'Azul', transmision: 'automatico' }
 ];
 
-// forEach
-console.log('\nFOREACH');
-const arr1 = [];
-console.log(autos.forEach(res => {
-	if (res.year === 2018) arr1.push(res);
-}));
-console.table(arr1);
-// map
-console.log('\nMAP');
-const arr2 = [];
-autos.map(res => {
-	if (res.year === 2016) arr2.push(res);
-});
-console.table(arr2);
-// filter
-console.log('\nFILTER');
-console.log(autos.filter(res => res.color === 'Blanco'));
-// find
-
+// forEach --> Realiza una acción en cada elemento del array; no puede almacenarlo en un array
+	console.log('\nFOREACH');
+	const arr1 = [];
+	console.log(autos.forEach(res => {
+		if (res.year === 2018) arr1.push(res);
+	}));
+	console.table(arr1);
+// map --> Realiza determinada acción con cada elemento del array; puede almacenarlo en un array
+	console.log('\nMAP');
+	const arr2 = [];
+	autos.map(auto => {
+		if (auto.year === 2017) arr2.push(auto);
+	});
+	console.table(arr2);
+// filter --> Filtra por parámtros de búsqueda
+	console.log('\nFILTER');
+	console.table(autos.filter(res => res.color === 'Blanco' && res.year === 2017));
+// find --> Filtra el primer resultado coincidente
+	console.log('\nFIND');
+	console.table(autos.find(auto => auto.color === 'Azul'));
 // reduce
-
-// some
-
-
+	console.log('\nREDUCE');
+	let resultado = autos.reduce((total, auto) => total + auto.precio, 0);
+	console.log(`Valor total de vehículos: U$S ${resultado}`);
+// some --> Devuelve TRUE o FALSE como resultado de búsqueda
+	console.log('\nSOME');
+	let busqueda_some = autos.some(auto => auto.marca === 'BMW');
+	busqueda_some ? console.log('El auto existe') : console.log('El auto no existe')

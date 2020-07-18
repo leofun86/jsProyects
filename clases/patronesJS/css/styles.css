@@ -1,0 +1,11 @@
+* { font-family:arial; }
+html, body { height:100%; width:100%; padding:0px!important; margin:0px!important; }
+body {
+background: rgb(2,0,36);
+background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(135,21,115,1) 53%);
+color:white;
+}
+.main { padding:20px; }
+.menu { background:orange; color: brown; padding: 10px 0px; border-radius:10px; }
+#caja1, #caja2, #caja3, #caja4, #caja5, #caja6 { display:none; }
+.tema_menu { cursor:pointer; width:50%; }

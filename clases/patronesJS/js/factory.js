@@ -1,33 +1,42 @@
 function constructorSitios() {
+    const caja = document.getElementById('caja');
     this.crearElemento = function(texto, tipo) {
         let html;
-        if (tipo === 'input') {
-            html = new inputHTML(texto);
-        } else if (tipo === 'img') {
-            html = new imgHTML(texto);
-        } else if (tipo === 'h1') {
-            html = new headingHTML(texto);
-        } else if (tipo === 'p') {
-            html = new pHTML(texto);
+        switch (tipo) {
+            case 'input':
+                html = new inputHTML(texto);
+            break;
+            case 'img':
+                html = new imgHTML(texto);
+            break;
+            case 'h1':
+                html = new headingHTML(texto);
+            break;
+            case 'p':
+                html = new pHTML(texto);
+            break;
         }
 
         html.tipo = tipo;
 
         html.mostrar = function() {
             const elemento = document.createElement(this.tipo);
-            if (this.tipo === 'input') {
-                elemento.setAttribute('placeholder', this.texto);
-            } else if (this.tipo === 'img') {
-                elemento.style.width='200px';
-                elemento.setAttribute('src', this.texto);
-            } else {
-                elemento.appendChild(document.createTextNode(this.texto));
+            switch (this.tipo) {
+                case 'input':
+                    elemento.setAttribute('placeholder', this.texto);
+                break;
+                case 'img':
+                    elemento.style.width='200px';
+                    elemento.setAttribute('src', this.texto);
+                break;
+                case 'h1':
+                    elemento.appendChild(document.createTextNode(this.texto));
+                break;
             }
             elemento.style.display='block';
             elemento.style.margin='10px 0px';
-            document.querySelector('#app').appendChild(elemento);
+            caja.appendChild(elemento);
         }
-
         return html;
     }
 }

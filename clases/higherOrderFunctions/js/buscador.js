@@ -1,6 +1,7 @@
 // crear los años
 const years = document.createElement('option');
 const  max = new Date().getFullYear();
+const caja = document.getElementById('resultado');
 let  min = max - 10;
 
 for(let i = max; i >  min; i--) {
@@ -163,27 +164,33 @@ marca.addEventListener('input', e=>{
 })
 const year = document.getElementById('year');
 year.addEventListener('input', e=>{
-    datosBusqueda.year = e.target.value;
+    datosBusqueda.year = Number(e.target.value);
+    filtrarAuto();
 })
 const minimo = document.getElementById('minimo');
 minimo.addEventListener('input', e=>{
-    datosBusqueda.minimo = e.target.value;
+    datosBusqueda.minimo = Number(e.target.value);
+    filtrarAuto();
 })
 const maximo = document.getElementById('maximo');
 maximo.addEventListener('input', e=>{
-    datosBusqueda.maximo = e.target.value;
+    datosBusqueda.maximo = Number(e.target.value);
+    filtrarAuto();
 })
 const puertas = document.getElementById('puertas');
 puertas.addEventListener('input', e=>{
-    datosBusqueda.puertas = e.target.value;
+    datosBusqueda.puertas = Number(e.target.value);
+    filtrarAuto();
 })
 const transmision = document.getElementById('transmision');
 transmision.addEventListener('input', e=>{
     datosBusqueda.transmision = e.target.value;
+    filtrarAuto();
 })
 const color = document.getElementById('color');
 color.addEventListener('input', e=>{
     datosBusqueda.color = e.target.value;
+    filtrarAuto();
 })
 
 const mostrarAutos = (autos)=>{
@@ -193,18 +200,67 @@ const mostrarAutos = (autos)=>{
         const data = document.createElement('p');
         data.textContent=`${auto.marca} ${auto.modelo} - ${auto.year} - ${auto.puertas} Puertas - ${auto.color} - Transmisión ${auto.transmision} - U$S ${auto.precio}`;
         fragment.appendChild(data);
-        document.getElementById('resultado').appendChild(fragment);
+        caja.appendChild(fragment);
     })
 }
 
 function filtrarAuto() {
-    const resultado = obtenerAutos().filter(filtrarMarca);
+    let resultado = obtenerAutos().filter(filtrarMarca).filter(filtrarYear).filter(filtrarMinimo).filter(filtrarMaximo).filter(filtrarPuertas).filter(filtrarTransmision).filter(filtrarColor);
+    cargando();
+    setTimeout(()=>{
+        if (resultado.length > 0) {
+            return mostrarAutos(resultado);
+        } else {
+            return noResult();
+        }
+    }, 1000);
 }
 
 function filtrarMarca(auto) {
-    if (datosBusqueda.marca) {
-        return auto.marca === datosBusqueda.marca
-    } else {
-        console.log('No hay marca seleccionada')
-    }
+    if (datosBusqueda.marca) { return auto.marca === datosBusqueda.marca } else { return auto };
+}
+function filtrarYear(auto) {
+    if (datosBusqueda.year) { return auto.year === datosBusqueda.year } else { return auto };
+}
+function filtrarMinimo(auto) {
+    if (datosBusqueda.minimo) { return auto.precio >= datosBusqueda.minimo } else { return auto };
+}
+function filtrarMaximo(auto) {
+    if (datosBusqueda.maximo) { return auto.precio <= datosBusqueda.maximo } else { return auto };
+}
+function filtrarPuertas(auto) {
+    if (datosBusqueda.puertas) { return auto.puertas === datosBusqueda.puertas } else { return auto };
+}
+function filtrarTransmision(auto) {
+    if (datosBusqueda.transmision) { return auto.transmision === datosBusqueda.transmision } else { return auto };
+}
+function filtrarColor(auto) {
+    if (datosBusqueda.color) { return auto.color === datosBusqueda.color } else { return auto };
+}
+
+function cargando() {
+    caja.innerHTML="";
+    const fragment = document.createDocumentFragment();
+    const center = document.createElement('center');
+    center.setAttribute('id', 'center_img');
+    const img = document.createElement('img');
+    img.setAttribute('src', 'assets/load.gif');
+    img.style.width='80px';
+    center.appendChild(img);
+    fragment.appendChild(center);
+    caja.appendChild(fragment);
+    setTimeout(()=>{ document.getElementById('center_img').remove(); }, 1000);
+}
+function noResult() {
+    caja.innerHTML="";
+    const fragment = document.createDocumentFragment();
+    const ele = document.createElement('h5');
+    ele.textContent='No se han encontrado resultados';
+    ele.style.color='white';
+    ele.style.backgroundColor='red';
+    ele.style.borderRadius='5px';
+    ele.style.padding="10px";
+    ele.style.textAlign='center';
+    fragment.appendChild(ele);
+    caja.appendChild(fragment);
 }

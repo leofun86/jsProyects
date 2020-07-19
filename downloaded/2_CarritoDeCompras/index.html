@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Carrito</title>
+    <title>Cursos para todos los gustos</title>
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/skeleton.css">
     <link rel="stylesheet" href="css/custom.css">
 </head>
 <body>
+<div id="alert" class="alert"></div>
 <header id="header" class="header">
     <div class="container">
         <div class="row">
@@ -19,7 +20,7 @@
             <div class="two columns u-pull-right">
                 <ul>
                     <li class="submenu">
-                            <img src="img/cart.png" id="img-carrito">
+                            <img src="img/cart.png" id="img-carrito"><div id="cantidad" style="display:inline;padding:4px 7px;background:red;color:white;border-radius:100px;font-size:10px;position:relative; bottom:24px;right:8px;"></div>
                             <div id="carrito">
                                     
                                     <table id="lista-carrito" class="u-full-width">

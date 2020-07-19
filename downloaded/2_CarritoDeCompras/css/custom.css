@@ -43,7 +43,10 @@ ul {
 
 .submenu #carrito{
     display: none;
+	height:400px;
+	overflow: scroll;
 }
+
 .submenu:hover #carrito{
     display: block;
     position: absolute;
@@ -176,3 +179,20 @@ display: block;
 margin-bottom: 10px;
 text-decoration: none;
 }
+.alert {
+	width:100%; margin-top:0px;
+	text-align:center; padding:5px 0px;
+	position:fixed; top:-34px;
+	z-index:2222; color:white;
+}
+ .alertAnim {
+	 animation: alert 1.5s;
+ }
+ 
+ @KeyFrames alert {
+	 0%{top:-34px;}
+	 20%{top:0px;}
+	 80%{top:0px;}
+	 100%{top:-34px;}
+ }
+ 

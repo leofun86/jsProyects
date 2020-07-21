@@ -26,7 +26,6 @@ header {
     color: white;
     font-weight: bold;
 }
-
 ul {
     list-style: none;
 }
@@ -92,8 +91,6 @@ ul {
     background-repeat: no-repeat;
     border:none;
 }
-
-
 .barra {
     padding: 20px 0;
 background: #741d51; /* Old browsers */
@@ -102,7 +99,6 @@ background: -webkit-linear-gradient(left, #741d51 0%,#e44e52 100%); /* Chrome10-
 background: linear-gradient(to right, #741d51 0%,#e44e52 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#741d51', endColorstr='#e44e52',GradientType=1 ); /* IE6-9 */
 }
-
 .barra p {
     margin:0;
     color: white;
@@ -120,9 +116,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#741d51', end
         margin-bottom:0;
     }
 }
-
-
-
 .icono1 {
     background-image: url(../img/icono1.png);
 }
@@ -167,8 +160,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#741d51', end
     font-weight: 700;
     font-size: 22px;
 }
-
-
 .footer {
     margin-top: 40px;
     border-top:1px solid #aaa;;
@@ -188,7 +179,6 @@ text-decoration: none;
  .alertAnim {
 	 animation: alert 1.5s;
  }
- 
  @KeyFrames alert {
 	 0%{top:-34px;}
 	 20%{top:0px;}

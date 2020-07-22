@@ -102,6 +102,7 @@ function eliminarCurso(e) {
 	if (e.target.classList.contains('borrar-curso')) {
 		eliminarCursoLocalStorage(e);
 		e.target.parentElement.parentElement.remove();
+		cursosAgregados = cursosAgregados.filter(curso => curso !== e.target.parentElement.parentElement.querySelector('.titulo').textContent);
 	}
 	return true;
 }
@@ -122,6 +123,7 @@ function vaciarCarrito(e) {
 	while (listaCursos.firstChild) {
 		listaCursos.firstChild.remove();
 	}
+	cursosAgregados=[];
 	vaciarLocalStorage();
 	return true;
 }
@@ -131,7 +133,6 @@ function guardarCursoLocalStorage(curso) {
 	let cursos;
 	// Toma datos de LocalStorage o un array vacío
 	cursos = obtenerCursosLocalStorage();
-	console.log(cursos);
 	// El curso seleccionado se agrega al array
 	cursos.push(curso);
 	// Almacena los cursos en LocalStorage
